@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHADOW — Developer & Bot Maker</title>
+<meta name="description" content="SHADOW — I build Telegram bots, websites, web apps and automation. 2-3 years of development & cybersecurity experience.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#05060a;--neon:#00ff9d;--purple:#a855f7;--red:#ff2d55;--txt:#e8eaf2;--dim:#9aa0b5;--card:rgba(16,20,32,.72)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;min-height:100vh}
+#matrix{position:fixed;inset:0;z-index:0;opacity:.35;pointer-events:none}
+.grid-floor{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.25;
+background-image:linear-gradient(rgba(0,255,157,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,157,.12) 1px,transparent 1px);
+background-size:44px 44px;transform:perspective(600px) rotateX(55deg) scale(1.6);transform-origin:center top;
+-webkit-mask-image:linear-gradient(to bottom,transparent 40%,#000 95%);mask-image:linear-gradient(to bottom,transparent 40%,#000 95%)}
+.aura{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none;opacity:.35;animation:drift 14s ease-in-out infinite alternate}
+.a1{width:340px;height:340px;background:#00ff9d22;top:-80px;left:-80px}
+.a2{width:380px;height:380px;background:#a855f722;bottom:-100px;right:-100px;animation-delay:-7s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(5,6,10,.72);border-bottom:1px solid #00ff9d22}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo{font-weight:800;letter-spacing:3px;font-size:20px;color:#fff;text-decoration:none}
+.logo b{color:var(--neon);text-shadow:0 0 12px var(--neon)}
+nav .links a{color:var(--dim);text-decoration:none;margin-left:22px;font-size:14px;letter-spacing:1px;transition:.25s}
+nav .links a:hover{color:var(--neon)}
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:56px 0 40px;min-height:78vh}
+/* ===== MONARCH CHARACTER (pure CSS 3D) ===== */
+.monarch-stage{flex:1 1 300px;display:flex;justify-content:center;perspective:900px;min-height:380px}
+.monarch{position:relative;width:230px;height:360px;transform-style:preserve-3d;animation:hover 5s ease-in-out infinite}
+@keyframes hover{0%,100%{transform:translateY(0) rotateY(-8deg)}50%{transform:translateY(-18px) rotateY(8deg)}}
+.m-aura{position:absolute;left:50%;top:55%;width:300px;height:300px;transform:translate(-50%,-50%);border-radius:50%;
+background:radial-gradient(circle,#a855f733 0%,#00ff9d11 45%,transparent 70%);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.12);opacity:.85}}
+.m-crown{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:120px;height:44px;
+background:linear-gradient(180deg,#2a2f45,#12141f);clip-path:polygon(0 100%,0 35%,14% 60%,28% 10%,42% 55%,50% 0%,58% 55%,72% 10%,86% 60%,100% 35%,100% 100%);
+box-shadow:0 0 22px #a855f7aa}
+.m-head{position:absolute;top:48px;left:50%;transform:translateX(-50%);width:104px;height:96px;border-radius:38px;
+background:linear-gradient(180deg,#1b1e2e,#0b0d16);box-shadow:0 0 30px #000 inset,0 0 26px #a855f755;border:1px solid #a855f744}
+.m-eye{position:absolute;top:40px;width:26px;height:10px;border-radius:6px;background:var(--red);box-shadow:0 0 14px var(--red),0 0 30px var(--red);animation:blink 4s infinite}
+.m-eye.l{left:18px}.m-eye.r{right:18px;background:var(--purple);box-shadow:0 0 14px var(--purple),0 0 30px var(--purple)}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.m-robe{position:absolute;top:138px;left:50%;transform:translateX(-50%);width:150px;height:200px;
+background:linear-gradient(180deg,#141726 0%,#0a0c14 70%,#05060a 100%);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);
+border-top:2px solid #a855f766;animation:robe 5s ease-in-out infinite}
+@keyframes robe{50%{filter:brightness(1.35)}}
+.m-core{position:absolute;top:170px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;
+background:radial-gradient(circle,#00ff9d 20%,#00ff9d44 60%,transparent 75%);animation:pulse 2.2s ease-in-out infinite}
+.shard{position:absolute;width:14px;height:14px;background:linear-gradient(135deg,#a855f7,#00ff9d);transform:rotate(45deg);opacity:.9;animation:orbit 7s linear infinite}
+.shard.s1{top:60px;left:10px}.shard.s2{top:200px;right:6px;animation-delay:-2.3s}.shard.s3{top:300px;left:40px;animation-delay:-4.6s}
+@keyframes orbit{0%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(225deg) translateY(-26px)}100%{transform:rotate(405deg) translateY(0)}}
+.m-base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:190px;height:26px;border-radius:50%;
+background:radial-gradient(ellipse,#00ff9d33,transparent 70%);filter:blur(4px)}
+.hero-txt{flex:1 1 320px}
+.kicker{color:var(--neon);letter-spacing:4px;font-size:12px;margin-bottom:14px}
+h1{font-size:clamp(34px,7vw,58px);line-height:1.08;font-weight:800}
+h1 .grad{background:linear-gradient(90deg,var(--neon),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{color:var(--neon);font-family:Consolas,monospace;font-size:clamp(15px,3.6vw,20px);margin:16px 0;min-height:28px}
+.type::after{content:'▊';animation:caret 1s steps(1) infinite;color:var(--neon)}
+@keyframes caret{50%{opacity:0}}
+.sub{color:var(--dim);font-size:16px;line-height:1.65;max-width:520px}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px;border:1px solid #00ff9d44;border-radius:999px;
+background:#00ff9d0d;font-size:13.5px;color:#c9ffe9}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:pulse 2s infinite}
+.cta{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px;transition:.25s;border:1px solid transparent}
+.btn-hot{background:linear-gradient(90deg,#00d97e,#00ff9d);color:#04120b;box-shadow:0 6px 26px #00ff9d44}
+.btn-hot:hover{transform:translateY(-2px);box-shadow:0 10px 32px #00ff9d66}
+.btn-ghost{border-color:#a855f766;color:#dcc6ff;background:#a855f711}
+.btn-ghost:hover{background:#a855f722;transform:translateY(-2px)}
+section{padding:46px 0}
+.sec-tag{color:var(--purple);letter-spacing:4px;font-size:12px;margin-bottom:10px}
+h2{font-size:clamp(24px,5.4vw,36px);margin-bottom:14px}
+p.lead{color:var(--dim);line-height:1.7;max-width:640px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}
+.skill{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:18px 16px;transition:.3s}
+.skill:hover{transform:translateY(-4px);border-color:#00ff9d55;box-shadow:0 12px 30px #00000088}
+.skill .ic{font-size:26px;margin-bottom:10px}
+.skill h3{font-size:15.5px;margin-bottom:10px}
+.bar{height:7px;border-radius:6px;background:#ffffff12;overflow:hidden}
+.bar span{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--neon),var(--purple));transition:width 1.4s ease}
+.terminal{background:#07090f;border:1px solid #00ff9d33;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 18px 50px #000000aa}
+.t-bar{display:flex;gap:8px;padding:12px 16px;background:#0c0f18;border-bottom:1px solid #ffffff10}
+.t-bar i{width:11px;height:11px;border-radius:50%}
+.t-bar i:nth-child(1){background:#ff5f57}.t-bar i:nth-child(2){background:#febc2e}.t-bar i:nth-child(3){background:#28c840}
+.t-body{padding:20px;font-family:Consolas,monospace;font-size:14px;line-height:2}
+.t-body .p{color:var(--neon)}.t-body .c{color:#5b6178}.t-body .w{color:#e8eaf2}.t-body .y{color:#ffd479}
+.projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
+.proj{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:22px;transition:.3s}
+.proj:hover{transform:translateY(-4px);border-color:#a855f766}
+.proj .ic{font-size:30px;margin-bottom:12px}
+.proj h3{margin-bottom:8px;font-size:17px}
+.proj p{color:var(--dim);font-size:14px;line-height:1.6}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:22px}
+.cbtn{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;background:var(--card);
+border:1px solid #ffffff14;color:#fff;text-decoration:none;font-weight:600;transition:.25s}
+.cbtn:hover{transform:translateY(-3px);border-color:#00ff9d66;box-shadow:0 12px 28px #00000088}
+.cbtn .ic{font-size:24px}
+.cbtn small{display:block;color:var(--dim);font-weight:400;font-size:12px}
+footer{text-align:center;padding:34px 0;color:var(--dim);font-size:13px;border-top:1px solid #ffffff0d;margin-top:20px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+@media(max-width:640px){
+.hero{padding:36px 0 30px;min-height:auto}
+.monarch-stage{min-height:320px;order:-1}
+.monarch{transform:scale(.85)}
+nav .links{display:none}
+.cta .btn{flex:1 1 45%;text-align:center;padding:12px 10px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="grid-floor"></div>
+<div class="aura a1"></div><div class="aura a2"></div>
+<nav><div class="wrap">
+<a class="logo" href="#">SH<b>A</b>DOW</a>
+<div class="links"><a href="#skills">SKILLS</a><a href="#journey">JOURNEY</a><a href="#work">WORK</a><a href="#contact">CONTACT</a></div>
+</div></nav>
+<div class="wrap">
+<header class="hero">
+<div class="monarch-stage"><div class="monarch">
+<div class="m-aura"></div><div class="m-crown"></div><div class="m-head"><div class="m-eye l"></div><div class="m-eye r"></div></div>
+<div class="m-robe"></div><div class="m-core"></div>
+<div class="shard s1"></div><div class="shard s2"></div><div class="shard s3"></div><div class="m-base"></div>
+</div></div>
+<div class="hero-txt">
+<div class="kicker">// HELLO WORLD, I AM</div>
+<h1>I build <span class="grad">smart digital products.</span></h1>
+<div class="type" id="typer"></div>
+<p class="sub">Telegram bots, websites, web apps and automation — clean, useful solutions built for real work. No templates. No shortcuts.</p>
+<div class="badge"><i></i>2–3 years in development, ethical hacking &amp; cybersecurity</div>
+<div class="cta"><a class="btn btn-hot" href="#contact">Start a Project →</a><a class="btn btn-ghost" href="#work">See What I Build</a></div>
+</div>
+</header>
+<section id="skills" class="reveal">
+<div class="sec-tag">01 / ARSENAL</div>
+<h2>What I do best.</h2>
+<p class="lead">Every skill below is battle-tested on real projects — bots serving hundreds of users, sites built from scratch.</p>
+<div class="skills">
+<div class="skill"><div class="ic">🐍</div><h3>Python Development</h3><div class="bar"><span data-w="92"></span></div></div>
+<div class="skill"><div class="ic">🤖</div><h3>Telegram Bots</h3><div class="bar"><span data-w="95"></span></div></div>
+<div class="skill"><div class="ic">🌐</div><h3>Websites</h3><div class="bar"><span data-w="88"></span></div></div>
+<div class="skill"><div class="ic">⚡</div><h3>Web Apps</h3><div class="bar"><span data-w="85"></span></div></div>
+<div class="skill"><div class="ic">🔁</div><h3>Automation Bots</h3><div class="bar"><span data-w="90"></span></div></div>
+<div class="skill"><div class="ic">🛡️</div><h3>Cybersecurity</h3><div class="bar"><span data-w="82"></span></div></div>
+</div>
+</section>
+<section id="journey" class="reveal">
+<div class="sec-tag">02 / JOURNEY</div>
+<h2>The path so far.</h2>
+<div class="terminal"><div class="t-bar"><i></i><i></i><i></i></div><div class="t-body">
+<div><span class="p">shadow@monarch</span><span class="c">:~$</span> <span class="w">cat journey.log</span></div>
+<div><span class="y">[2023]</span> <span class="w">Started the grind — Python, Linux, networking basics.</span></div>
+<div><span class="y">[2024]</span> <span class="w">First Telegram bots live. Real users. Real feedback.</span></div>
+<div><span class="y">[2025]</span> <span class="w">Websites + automation systems. Giveaway &amp; referral engines.</span></div>
+<div><span class="y">[2026]</span> <span class="w">Full-stack builds. Security-first mindset. Still rising. ▲</span></div>
+<div><span class="c"># 2–3 years of hacking, building &amp; breaking things (legally).</span></div>
+<div><span class="p">shadow@monarch</span><span class="c">:~$</span> <span class="w">▊</span></div>
+</div></div>
+</section>
+<section id="work" class="reveal">
+<div class="sec-tag">03 / WORK</div>
+<h2>Things I've built.</h2>
+<div class="projs">
+<div class="proj"><div class="ic">🎁</div><h3>Giveaway Bot System</h3><p>Telegram giveaway bot with referrals, broadcasts &amp; winner engine — serving 350+ users.</p></div>
+<div class="proj"><div class="ic">💬</div><h3>Support &amp; Chat Bots</h3><p>Auto-moderation, welcome flows and support automation for large groups.</p></div>
+<div class="proj"><div class="ic">🖥️</div><h3>Websites &amp; Dashboards</h3><p>Fast, mobile-first sites and admin panels — designed &amp; coded by hand.</p></div>
+</div>
+</section>
+<section id="contact" class="reveal">
+<div class="sec-tag">04 / CONTACT</div>
+<h2>Let's build something.</h2>
+<p class="lead">Have an idea? A bot, a site, an automation? Message me directly — I reply fast.</p>
+<div class="contact-grid">
+<a class="cbtn" href="https://t.me/shadowhaccr" target="_blank" rel="noopener"><span class="ic">✈️</span><span>Telegram DM<small>@shadowhaccr — fastest reply</small></span></a>
+<a class="cbtn" href="https://t.me/sk_dev_official" target="_blank" rel="noopener"><span class="ic">📢</span><span>Shadow Dev Channel<small>@sk_dev_official</small></span></a>
+<a class="cbtn" href="https://t.me/shadowhacrrrr" target="_blank" rel="noopener"><span class="ic">📢</span><span>Shadow Official<small>@shadowhacrrrr</small></span></a>
+<a class="cbtn" href="https://www.tiktok.com/@shadow_devv" target="_blank" rel="noopener"><span class="ic">🎵</span><span>TikTok<small>@shadow_devv</small></span></a>
+</div>
+</section>
+<footer>© 2026 SHADOW — Built with 💀 by the Monarch himself.</footer>
+</div>
+<script>
+(function(){
+var cv=document.getElementById('matrix'),cx=cv.getContext('2d'),cols,drops,W,H;
+var mobile=innerWidth<640;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;
+var fs=mobile?18:16;cols=Math.floor(W/fs);
+drops=[];for(var i=0;i<cols;i++)drops[i]=Math.random()*-40;}
+size();addEventListener('resize',size);
+var chars='01<>/\\{}[]#$%&@01';
+var fs2=mobile?18:16,last=0;
+function draw(t){
+if(t-last<(mobile?90:55))return requestAnimationFrame(draw);
+last=t;cx.fillStyle='rgba(5,6,10,.14)';cx.fillRect(0,0,W,H);
+cx.font=fs2+'px monospace';
+var step=mobile?3:1;
+for(var i=0;i<cols;i+=step){
+var ch=chars[Math.floor(Math.random()*chars.length)];
+cx.fillStyle=Math.random()>.92?'#a855f7':'#00ff9d';
+cx.fillText(ch,i*fs2,drops[i]*fs2);
+if(drops[i]*fs2>H&&Math.random()>.976)drops[i]=0;
+drops[i]+=mobile?.6:1;}
+requestAnimationFrame(draw);}
+requestAnimationFrame(draw);
+var lines=['> I craft Telegram bots that work while you sleep.','> I ship websites that look dangerous & load fast.','> 2-3 years. Zero shortcuts. Pure build.'];
+var el=document.getElementById('typer'),li=0,ci=0,del=false;
+(function type(){
+var cur=lines[li];
+el.textContent=cur.slice(0,ci);
+if(!del){ci++;if(ci>cur.length){del=true;return setTimeout(type,1600);}}
+else{ci--;if(ci===0){del=false;li=(li+1)%lines.length;}}
+setTimeout(type,del?28:55);})();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){e.target.classList.add('on');
+e.target.querySelectorAll('.bar span').forEach(function(s){s.style.width=s.dataset.w+'%';});
+io.unobserve(e.target);}})},{threshold:.15});
+document.querySelectorAll('.reveal,.skill').forEach(function(s){io.observe(s);});
+})();
+</script>
+</body>
+</html>
