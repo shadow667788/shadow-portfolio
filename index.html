@@ -206,7 +206,7 @@
 </head>
 <body>
 <div class="ambience" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
-<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span></div></div>
+<div class="marquee top-marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span></div></div>
 <div class="wrap">
   <header id="home">
     <div class="topbar"><span class="topbrand">SHADOW &#9819;</span><button id="muteBtn" class="mute-btn muted" type="button" aria-label="Toggle background music"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="muteLabel">Music: Off</span></button></div>
@@ -354,7 +354,7 @@
   })();
 </script>
 
-<audio id="bgSong" src="song.mp3" loop preload="auto"></audio>
+<audio id="bgSong" src="song.mp3" loop preload="auto" autoplay playsinline></audio>
 <script>
 /* USER-SUPPLIED SONG — song.mp3 (local file, looped) routed through the
    AnalyserNode so beat-reactive animations react to this song. */
@@ -362,7 +362,7 @@
   var btn=document.getElementById('muteBtn'), label=document.getElementById('muteLabel');
   var audio=document.getElementById('bgSong');
   var bars=document.querySelectorAll('.viz i');
-  var marqueeTracks=document.querySelectorAll('.marquee-track');
+  var marqueeTracks=document.querySelectorAll('.marquee:not(.top-marquee) .marquee-track'); // top marquee: beat matching OFF, constant speed
   var logo=document.querySelector('.king-logo');
   var ctx=null, analyser=null, master=null, source=null, data=null, started=false, muted=true;
   function setBtn(){
@@ -414,9 +414,17 @@
     if(master) master.gain.value = muted ? 0 : 0.8;
     setBtn();
   });
-  // Autoplay attempt on load; first touch/scroll/click fallback if blocked.
+  // Autoplay: attempt immediately (link-click activation lasts only a few
+  // seconds, so waiting for window load can miss it), retry briefly, and
+  // fall back to the first touch/scroll/click if the browser still blocks it.
+  start();
   window.addEventListener('load', function(){ start(); });
-  ['pointerdown','touchstart','scroll','keydown'].forEach(function(ev){
+  var tries = 0;
+  var retry = setInterval(function(){
+    if(started || tries >= 8){ clearInterval(retry); return; }
+    tries++; start();
+  }, 800);
+  ['pointerdown','mousedown','touchstart','scroll','keydown'].forEach(function(ev){
     window.addEventListener(ev, function(){ if(!started) start(); }, {passive:true});
   });
   setBtn();
