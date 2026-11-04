@@ -3,224 +3,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOW — Developer & Bot Maker</title>
-<meta name="description" content="SHADOW — I build Telegram bots, websites, web apps and automation. 2-3 years of development & cybersecurity experience.">
+<title>SHADOW — Portfolio</title>
+<meta name="description" content="SHADOW builds smart digital products: Python development, Telegram bots, websites, web apps, and automation.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#05060a;--neon:#00ff9d;--purple:#a855f7;--red:#ff2d55;--txt:#e8eaf2;--dim:#9aa0b5;--card:rgba(16,20,32,.72)}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;min-height:100vh}
-#matrix{position:fixed;inset:0;z-index:0;opacity:.35;pointer-events:none}
-.grid-floor{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.25;
-background-image:linear-gradient(rgba(0,255,157,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,157,.12) 1px,transparent 1px);
-background-size:44px 44px;transform:perspective(600px) rotateX(55deg) scale(1.6);transform-origin:center top;
--webkit-mask-image:linear-gradient(to bottom,transparent 40%,#000 95%);mask-image:linear-gradient(to bottom,transparent 40%,#000 95%)}
-.aura{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none;opacity:.35;animation:drift 14s ease-in-out infinite alternate}
-.a1{width:340px;height:340px;background:#00ff9d22;top:-80px;left:-80px}
-.a2{width:380px;height:380px;background:#a855f722;bottom:-100px;right:-100px;animation-delay:-7s}
-@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
-.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(5,6,10,.72);border-bottom:1px solid #00ff9d22}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-.logo{font-weight:800;letter-spacing:3px;font-size:20px;color:#fff;text-decoration:none}
-.logo b{color:var(--neon);text-shadow:0 0 12px var(--neon)}
-nav .links a{color:var(--dim);text-decoration:none;margin-left:22px;font-size:14px;letter-spacing:1px;transition:.25s}
-nav .links a:hover{color:var(--neon)}
-.hero{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:56px 0 40px;min-height:78vh}
-/* ===== MONARCH CHARACTER (pure CSS 3D) ===== */
-.monarch-stage{flex:1 1 300px;display:flex;justify-content:center;perspective:900px;min-height:380px}
-.monarch{position:relative;width:230px;height:360px;transform-style:preserve-3d;animation:hover 5s ease-in-out infinite}
-@keyframes hover{0%,100%{transform:translateY(0) rotateY(-8deg)}50%{transform:translateY(-18px) rotateY(8deg)}}
-.m-aura{position:absolute;left:50%;top:55%;width:300px;height:300px;transform:translate(-50%,-50%);border-radius:50%;
-background:radial-gradient(circle,#a855f733 0%,#00ff9d11 45%,transparent 70%);animation:pulse 3s ease-in-out infinite}
-@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.12);opacity:.85}}
-.m-crown{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:120px;height:44px;
-background:linear-gradient(180deg,#2a2f45,#12141f);clip-path:polygon(0 100%,0 35%,14% 60%,28% 10%,42% 55%,50% 0%,58% 55%,72% 10%,86% 60%,100% 35%,100% 100%);
-box-shadow:0 0 22px #a855f7aa}
-.m-head{position:absolute;top:48px;left:50%;transform:translateX(-50%);width:104px;height:96px;border-radius:38px;
-background:linear-gradient(180deg,#1b1e2e,#0b0d16);box-shadow:0 0 30px #000 inset,0 0 26px #a855f755;border:1px solid #a855f744}
-.m-eye{position:absolute;top:40px;width:26px;height:10px;border-radius:6px;background:var(--red);box-shadow:0 0 14px var(--red),0 0 30px var(--red);animation:blink 4s infinite}
-.m-eye.l{left:18px}.m-eye.r{right:18px;background:var(--purple);box-shadow:0 0 14px var(--purple),0 0 30px var(--purple)}
-@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-.m-robe{position:absolute;top:138px;left:50%;transform:translateX(-50%);width:150px;height:200px;
-background:linear-gradient(180deg,#141726 0%,#0a0c14 70%,#05060a 100%);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);
-border-top:2px solid #a855f766;animation:robe 5s ease-in-out infinite}
-@keyframes robe{50%{filter:brightness(1.35)}}
-.m-core{position:absolute;top:170px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;
-background:radial-gradient(circle,#00ff9d 20%,#00ff9d44 60%,transparent 75%);animation:pulse 2.2s ease-in-out infinite}
-.shard{position:absolute;width:14px;height:14px;background:linear-gradient(135deg,#a855f7,#00ff9d);transform:rotate(45deg);opacity:.9;animation:orbit 7s linear infinite}
-.shard.s1{top:60px;left:10px}.shard.s2{top:200px;right:6px;animation-delay:-2.3s}.shard.s3{top:300px;left:40px;animation-delay:-4.6s}
-@keyframes orbit{0%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(225deg) translateY(-26px)}100%{transform:rotate(405deg) translateY(0)}}
-.m-base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:190px;height:26px;border-radius:50%;
-background:radial-gradient(ellipse,#00ff9d33,transparent 70%);filter:blur(4px)}
-.hero-txt{flex:1 1 320px}
-.kicker{color:var(--neon);letter-spacing:4px;font-size:12px;margin-bottom:14px}
-h1{font-size:clamp(34px,7vw,58px);line-height:1.08;font-weight:800}
-h1 .grad{background:linear-gradient(90deg,var(--neon),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
-.type{color:var(--neon);font-family:Consolas,monospace;font-size:clamp(15px,3.6vw,20px);margin:16px 0;min-height:28px}
-.type::after{content:'▊';animation:caret 1s steps(1) infinite;color:var(--neon)}
-@keyframes caret{50%{opacity:0}}
-.sub{color:var(--dim);font-size:16px;line-height:1.65;max-width:520px}
-.badge{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px;border:1px solid #00ff9d44;border-radius:999px;
-background:#00ff9d0d;font-size:13.5px;color:#c9ffe9}
-.badge i{width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:pulse 2s infinite}
-.cta{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px;transition:.25s;border:1px solid transparent}
-.btn-hot{background:linear-gradient(90deg,#00d97e,#00ff9d);color:#04120b;box-shadow:0 6px 26px #00ff9d44}
-.btn-hot:hover{transform:translateY(-2px);box-shadow:0 10px 32px #00ff9d66}
-.btn-ghost{border-color:#a855f766;color:#dcc6ff;background:#a855f711}
-.btn-ghost:hover{background:#a855f722;transform:translateY(-2px)}
-section{padding:46px 0}
-.sec-tag{color:var(--purple);letter-spacing:4px;font-size:12px;margin-bottom:10px}
-h2{font-size:clamp(24px,5.4vw,36px);margin-bottom:14px}
-p.lead{color:var(--dim);line-height:1.7;max-width:640px}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}
-.skill{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:18px 16px;transition:.3s}
-.skill:hover{transform:translateY(-4px);border-color:#00ff9d55;box-shadow:0 12px 30px #00000088}
-.skill .ic{font-size:26px;margin-bottom:10px}
-.skill h3{font-size:15.5px;margin-bottom:10px}
-.bar{height:7px;border-radius:6px;background:#ffffff12;overflow:hidden}
-.bar span{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--neon),var(--purple));transition:width 1.4s ease}
-.terminal{background:#07090f;border:1px solid #00ff9d33;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 18px 50px #000000aa}
-.t-bar{display:flex;gap:8px;padding:12px 16px;background:#0c0f18;border-bottom:1px solid #ffffff10}
-.t-bar i{width:11px;height:11px;border-radius:50%}
-.t-bar i:nth-child(1){background:#ff5f57}.t-bar i:nth-child(2){background:#febc2e}.t-bar i:nth-child(3){background:#28c840}
-.t-body{padding:20px;font-family:Consolas,monospace;font-size:14px;line-height:2}
-.t-body .p{color:var(--neon)}.t-body .c{color:#5b6178}.t-body .w{color:#e8eaf2}.t-body .y{color:#ffd479}
-.projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
-.proj{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:22px;transition:.3s}
-.proj:hover{transform:translateY(-4px);border-color:#a855f766}
-.proj .ic{font-size:30px;margin-bottom:12px}
-.proj h3{margin-bottom:8px;font-size:17px}
-.proj p{color:var(--dim);font-size:14px;line-height:1.6}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:22px}
-.cbtn{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;background:var(--card);
-border:1px solid #ffffff14;color:#fff;text-decoration:none;font-weight:600;transition:.25s}
-.cbtn:hover{transform:translateY(-3px);border-color:#00ff9d66;box-shadow:0 12px 28px #00000088}
-.cbtn .ic{font-size:24px}
-.cbtn small{display:block;color:var(--dim);font-weight:400;font-size:12px}
-footer{text-align:center;padding:34px 0;color:var(--dim);font-size:13px;border-top:1px solid #ffffff0d;margin-top:20px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.on{opacity:1;transform:none}
-@media(max-width:640px){
-.hero{padding:36px 0 30px;min-height:auto}
-.monarch-stage{min-height:320px;order:-1}
-.monarch{transform:scale(.85)}
-nav .links{display:none}
-.cta .btn{flex:1 1 45%;text-align:center;padding:12px 10px;font-size:14px}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#070708;
+    --bg2:#101014;
+    --panel:#15151c;
+    --panel2:#1d1d26;
+    --red:#ff2d55;
+    --red2:#ff7a8a;
+    --violet:#5a2d6b;
+    --text:#fdfaf2;
+    --muted:#a9a6b0;
+    --line:rgba(255,45,85,.38);
+    --grad:linear-gradient(135deg,#ff7a8a 0%,#ff2d55 45%,#b3122f 100%);
+    --grad-violet:linear-gradient(135deg,#5a2d6b,#2a1a3d);
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .ambience{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .ambience::before{
+    content:"";position:absolute;width:70vw;height:70vw;left:-20vw;top:-25vw;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,45,85,.16),transparent 65%);
+    animation:drift 22s ease-in-out infinite alternate;
+  }
+  .ambience::after{
+    content:"";position:absolute;width:55vw;height:55vw;right:-18vw;bottom:-20vw;border-radius:50%;
+    background:radial-gradient(circle,rgba(90,45,107,.14),transparent 65%);
+    animation:drift 28s ease-in-out infinite alternate-reverse;
+  }
+  .orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;animation:floatY 7s ease-in-out infinite}
+  .orb.o1{width:14px;height:14px;background:var(--red);left:12%;top:22%}
+  .orb.o2{width:10px;height:10px;background:var(--violet);right:14%;top:38%;animation-delay:1.2s}
+  .orb.o3{width:18px;height:18px;background:var(--red2);left:46%;top:12%;animation-delay:2s;opacity:.35}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(4vw,3vw) scale(1.08)}}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  @keyframes bobSoft{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-4px) rotate(.4deg)}}
+  @keyframes spinSlow{to{transform:rotate(360deg)}}
+  @keyframes crownFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+  @keyframes crownGlow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,45,85,.55))}50%{filter:drop-shadow(0 0 26px rgba(255,45,85,.95))}}
+  @keyframes marqueeL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes marqueeR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes pulseRed{0%,100%{box-shadow:0 10px 30px rgba(255,45,85,.25)}50%{box-shadow:0 10px 38px rgba(255,45,85,.55)}}
+  @keyframes barShine{0%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(240%) skewX(-18deg)}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+  @keyframes shine{0%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(240%) skewX(-18deg)}}
+  @keyframes pulseSoft{0%,100%{box-shadow:0 0 0 0 rgba(255,45,85,.25)}50%{box-shadow:0 0 0 8px rgba(255,45,85,0)}}
+  .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;background:rgba(255,45,85,.06)}
+  .marquee-track{display:inline-flex;gap:28px;font-weight:900;letter-spacing:.22em;font-size:13px;text-transform:uppercase;color:var(--red2);animation:marqueeL 22s linear infinite;will-change:transform}
+  .marquee.rev .marquee-track{animation-name:marqueeR;animation-duration:26s;color:var(--red2)}
+  .marquee span{flex:none}
+  .king-logo{position:relative;width:200px;height:200px;margin:0 auto 12px;display:grid;place-items:center}
+  .logo-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,45,85,.45);box-shadow:0 0 24px rgba(255,45,85,.35),inset 0 0 24px rgba(255,45,85,.18)}
+  .logo-orbit{position:absolute;inset:0;animation:spinSlow 10s linear infinite}
+  .logo-orbit i{position:absolute;width:11px;height:11px;border-radius:50%;background:#ff2d55;box-shadow:0 0 14px #ff2d55,0 0 4px #fff}
+  .logo-orbit i:nth-child(1){left:calc(50% - 5px);top:-6px}
+  .logo-orbit i:nth-child(2){right:-6px;top:calc(50% - 5px)}
+  .logo-orbit i:nth-child(3){left:calc(50% - 5px);bottom:-6px}
+  .logo-orbit i:nth-child(4){left:-6px;top:calc(50% - 5px)}
+  .logo-orbit2{position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(255,122,138,.5);animation:spinSlow 18s linear infinite reverse}
+  .logo-inner{position:relative;z-index:1;text-align:center;animation:crownFloat 4.5s ease-in-out infinite}
+  .crown3d{position:relative;width:118px;height:84px;margin:0 auto;filter:drop-shadow(0 10px 18px rgba(255,45,85,.55)) drop-shadow(0 3px 0 rgba(0,0,0,.45));animation:crownGlow 3s ease-in-out infinite}
+  .crown3d .crown-body{position:absolute;inset:0;background:linear-gradient(160deg,#ff9aa8 0%,#ff2d55 38%,#8f0f28 72%,#ff2d55 100%);clip-path:polygon(0 100%,0 32%,18% 58%,33% 8%,50% 48%,67% 8%,82% 58%,100% 32%,100% 100%)}
+  .crown3d .crown-body::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.65) 0%,rgba(255,255,255,0) 45%);clip-path:polygon(0 100%,0 32%,18% 58%,33% 8%,50% 48%,67% 8%,82% 58%,100% 32%,100% 100%)}
+  .crown3d .crown-base{position:absolute;left:-2px;right:-2px;bottom:0;height:18px;border-radius:5px;background:linear-gradient(180deg,#ff7a8a,#b3122f 60%,#6d0a20);box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -3px 0 rgba(0,0,0,.4)}
+  .crown3d .jewel{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid #ff2d55;box-shadow:0 0 10px rgba(255,255,255,.9);z-index:1}
+  .crown3d .jewel.j1{left:16%;top:52%}
+  .crown3d .jewel.j2{left:calc(50% - 6px);top:38%}
+  .crown3d .jewel.j3{right:16%;top:52%}
+  .logo-word{font-size:36px;font-weight:900;letter-spacing:.26em;text-indent:.26em;margin-top:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 14px rgba(255,45,85,.45))}
+  .king-line{font-size:12px;font-weight:900;letter-spacing:.34em;color:var(--red2);text-transform:uppercase;margin:6px 0 2px;animation:gradShift 5s ease infinite}
+  .wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:28px 18px 56px}
+  header{text-align:center;padding:10px 0 6px;animation:riseIn .8s ease both}
+  .tagline{color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-top:10px}
+  nav.pillnav{
+    display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto 0;padding:6px;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:999px;width:fit-content;max-width:100%;
+    animation:riseIn .8s .15s ease both;
+  }
+  nav.pillnav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.08em;padding:8px 16px;border-radius:999px;transition:.25s}
+  nav.pillnav a:hover,nav.pillnav a.active{color:#ffffff;background:var(--grad)}
+  .hero{display:grid;gap:22px;margin-top:34px}
+  .hero-text{animation:riseIn .9s .2s ease both}
+  .kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--red);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:rgba(255,45,85,.08)}
+  h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:18px 0 12px;letter-spacing:-.01em}
+  h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .typing{font-size:18px;color:var(--muted);min-height:28px}
+  .typing b{color:var(--text)}
+  .cursor{display:inline-block;width:2px;height:20px;background:var(--red);vertical-align:middle;margin-left:3px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero p.lead{color:var(--muted);margin:14px 0 22px;max-width:560px}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:15px;padding:14px 26px;border-radius:999px;transition:transform .25s,box-shadow .25s}
+  .btn-primary{color:#ffffff;background:var(--grad);box-shadow:0 10px 30px rgba(255,45,85,.25);animation:pulseRed 2.6s ease-in-out infinite}
+  .btn-primary::after{content:"";position:absolute;top:0;bottom:0;width:40%;background:rgba(255,255,255,.35);animation:shine 3.2s ease-in-out infinite}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(255,45,85,.35)}
+  .btn-ghost{color:var(--text);border:1.5px solid rgba(255,255,255,.22);background:transparent}
+  .btn-ghost:hover{transform:translateY(-3px);border-color:var(--red);color:var(--red2)}
+  .showcase{
+    background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--line);border-radius:28px;padding:26px;position:relative;overflow:hidden;
+    animation:riseIn .9s .35s ease both,bobSoft 6s ease-in-out 1s infinite;
+  }
+  .showcase::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(255,45,85,.18),transparent 55%);pointer-events:none}
+  .showcase .avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:30px;font-weight:900;color:#ffffff;background:var(--grad);animation:pulseSoft 3s infinite;position:relative}
+  .showcase h2{font-size:26px;margin:16px 0 6px;position:relative}
+  .showcase p{color:var(--muted);position:relative}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;position:relative}
+  .stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px 10px;text-align:center;animation:popIn .7s ease both}
+  .stat:nth-child(2){animation-delay:.15s}.stat:nth-child(3){animation-delay:.3s}
+  .stat strong{display:block;font-size:22px;color:var(--red2)}
+  .stat span{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  section{margin-top:64px}
+  .sec-head{margin-bottom:24px}
+  .sec-num{color:var(--red);font-size:12px;font-weight:900;letter-spacing:.28em}
+  .sec-head h2{font-size:clamp(26px,4vw,36px);letter-spacing:.02em;text-transform:uppercase;background:linear-gradient(90deg,var(--red2),#fff,var(--red),var(--violet),var(--red2));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 6s ease infinite}
+  .sec-head h2::after{content:"";display:block;width:64px;height:4px;border-radius:99px;background:var(--grad);margin-top:10px}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  .grid{display:grid;gap:18px;align-items:start}
+  .service-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:900;color:#fff;background:var(--grad);margin-bottom:14px;animation:floatY 5s ease-in-out infinite}
+  .service-card h3{font-size:18px;margin-bottom:6px}
+  .service-card p{color:var(--muted);font-size:14px;line-height:1.6}
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:24px;animation:bob 8s ease-in-out infinite}
+  .card:nth-child(2n){animation-duration:9s;animation-delay:1s}
+  .card:nth-child(3n){animation-duration:10s;animation-delay:2s}
+  .card:hover{border-color:var(--line);box-shadow:0 18px 36px rgba(0,0,0,.35)}
+  .chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .chip{font-size:12px;font-weight:700;padding:7px 13px;border-radius:999px;border:1px solid var(--line);color:var(--red2);background:rgba(255,45,85,.08);animation:floatY 4s ease-in-out infinite}
+  .chip:nth-child(2n){animation-delay:.5s}.chip:nth-child(3n){animation-delay:1s}
+  .skill{margin-bottom:16px}
+  .skill-top{display:flex;justify-content:space-between;font-weight:700;font-size:14px}
+  .skill-top span:last-child{color:var(--red2)}
+  .bar{height:10px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:8px}
+  .bar i{display:block;height:100%;border-radius:99px;background:var(--grad);width:0;transition:width 1.2s ease;position:relative;overflow:hidden}
+  .bar i::after{content:"";position:absolute;top:0;bottom:0;width:40%;background:rgba(255,255,255,.4);animation:barShine 2.8s ease-in-out infinite}
+  .bar.violet i{background:var(--grad-violet)}
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--red),var(--violet))}
+  .tl{position:relative;margin-bottom:20px}
+  .tl::before{content:"";position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:50%;background:var(--grad);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--red);animation:pulseSoft 2.4s infinite}
+  .tl strong{font-size:18px}
+  .tl p{color:var(--muted)}
+  .work-feature{border-radius:28px;padding:26px}
+  .work-feature h3{font-size:22px;margin-bottom:6px}
+  .work-feature p{color:var(--muted)}
+  .work-feature .big{font-size:34px;font-weight:900;color:var(--red2);margin-top:14px}
+  .contact-grid a{color:inherit;text-decoration:none}
+  .contact-grid .card h3{font-size:17px}
+  .contact-grid .card p{color:var(--muted);font-size:14px;margin-top:4px}
+  .contact-grid .card .go{color:var(--red2);font-weight:800;margin-top:12px;display:inline-block}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}
+  @media(max-width:480px){
+    .king-logo{width:180px;height:180px}
+    .logo-word{font-size:30px}
+    .stat strong{font-size:18px}
+    .stat span{font-size:11px}
+    .wrap{padding:22px 16px 48px}
+  }
+  @media(min-width:820px){
+    .hero{grid-template-columns:1.15fr .85fr;align-items:center}
+    .grid.cols2{grid-template-columns:1fr 1fr}
+    .grid.cols3{grid-template-columns:1fr 1fr 1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
 </style>
 </head>
 <body>
-<canvas id="matrix"></canvas>
-<div class="grid-floor"></div>
-<div class="aura a1"></div><div class="aura a2"></div>
-<nav><div class="wrap">
-<a class="logo" href="#">SH<b>A</b>DOW</a>
-<div class="links"><a href="#skills">SKILLS</a><a href="#journey">JOURNEY</a><a href="#work">WORK</a><a href="#contact">CONTACT</a></div>
-</div></nav>
+<div class="ambience" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span></div></div>
 <div class="wrap">
-<header class="hero">
-<div class="monarch-stage"><div class="monarch">
-<div class="m-aura"></div><div class="m-crown"></div><div class="m-head"><div class="m-eye l"></div><div class="m-eye r"></div></div>
-<div class="m-robe"></div><div class="m-core"></div>
-<div class="shard s1"></div><div class="shard s2"></div><div class="shard s3"></div><div class="m-base"></div>
-</div></div>
-<div class="hero-txt">
-<div class="kicker">// HELLO WORLD, I AM</div>
-<h1>I build <span class="grad">smart digital products.</span></h1>
-<div class="type" id="typer"></div>
-<p class="sub">Telegram bots, websites, web apps and automation — clean, useful solutions built for real work. No templates. No shortcuts.</p>
-<div class="badge"><i></i>2–3 years in development, ethical hacking &amp; cybersecurity</div>
-<div class="cta"><a class="btn btn-hot" href="#contact">Start a Project →</a><a class="btn btn-ghost" href="#work">See What I Build</a></div>
+  <header id="home">
+    <div class="king-logo" aria-label="SHADOW king logo">
+      <div class="logo-ring"></div>
+      <div class="logo-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="logo-orbit2" aria-hidden="true"></div>
+      <div class="logo-inner">
+        <div class="crown3d" aria-hidden="true">
+          <div class="crown-body"></div>
+          <span class="jewel j1"></span><span class="jewel j2"></span><span class="jewel j3"></span>
+          <div class="crown-base"></div>
+        </div>
+        <div class="logo-word">SHADOW</div>
+      </div>
+    </div>
+    <div class="king-line">The King Builds</div>
+    <div class="tagline">Python Developer &middot; Telegram Bots &middot; Websites</div>
+    <nav class="pillnav" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#services">Services</a>
+      <a href="#journey">Journey</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-text">
+        <span class="kicker">&#9819; King Style &mdash; Available for projects</span>
+        <h1>I build <em>smart digital products</em></h1>
+        <div class="typing">I create <b id="typing">Telegram Bots</b><span class="cursor"></span></div>
+        <p class="lead">Complete apps, websites, website-to-app conversions, boards &amp; panels, custom tools and Termux tools — if it can be built, I build it. Python development, Telegram bots and automation, built clean, fast and made to be used every day.</p>
+        <div class="btnrow">
+          <a class="btn btn-primary" href="#contact">Start a Project &rarr;</a>
+          <a class="btn btn-ghost" href="#work">See What I Build</a>
+        </div>
+      </div>
+      <aside class="showcase" aria-label="Showcase">
+        <div class="avatar">S</div>
+        <h2>SHADOW</h2>
+        <p>Developer focused on practical products: bots people actually use, websites that load fast, and tools that save time.</p>
+        <div class="stats">
+          <div class="stat"><strong>350+</strong><span>Giveaway Users</span></div>
+          <div class="stat"><strong>95%</strong><span>Bot Skill</span></div>
+          <div class="stat"><strong>2023&ndash;26</strong><span>Journey</span></div>
+        </div>
+      </aside>
+    </section>
+    <section id="skills" aria-label="Skills">
+      <div class="sec-head"><div class="sec-num">01 / SKILLS</div><h2>What I Do Best</h2></div>
+      <div class="grid cols2">
+        <div class="card reveal">
+          <div class="skill"><div class="skill-top"><span>Python Development</span><span>92%</span></div><div class="bar"><i data-w="92%"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Telegram Bots</span><span>95%</span></div><div class="bar"><i data-w="95%"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Websites</span><span>88%</span></div><div class="bar violet"><i data-w="88%"></i></div></div>
+        </div>
+        <div class="card reveal">
+          <div class="skill"><div class="skill-top"><span>Web Apps</span><span>85%</span></div><div class="bar"><i data-w="85%"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Automation Bots</span><span>90%</span></div><div class="bar violet"><i data-w="90%"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Cybersecurity</span><span>82%</span></div><div class="bar"><i data-w="82%"></i></div></div>
+        </div>
+      </div>
+      <div class="chiprow reveal">
+        <span class="chip">Python</span><span class="chip">Telegram Bots</span><span class="chip">Websites</span><span class="chip">Web Apps</span><span class="chip">Automation</span><span class="chip">APIs</span><span class="chip">Flask</span>
+      </div>
+    </section>
+    <section id="services" aria-label="Services">
+      <div class="sec-head"><div class="sec-num">02 / SERVICES</div><h2>What I Build — Anything</h2></div>
+      <p style="color:var(--muted);margin:-8px 0 24px;max-width:620px">Complete apps, websites, boards, tools and more — one builder, end to end. If it can be built, I build it.</p>
+      <div class="grid cols2">
+        <article class="card service-card reveal"><div class="service-icon">&#128241;</div><h3>Complete Apps</h3><p>Full mobile and web apps, designed, built and ready to use — not just a demo, a complete product.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#127760;</div><h3>Websites</h3><p>Fast, mobile-first websites for businesses, products and services, with clean design and clear contact paths.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#8646;</div><h3>Website to App</h3><p>Turn an existing website into a proper app experience, so users get it on their phone like a real app.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#128187;</div><h3>Boards &amp; Panels</h3><p>Control boards, service boards and hosting panels — dashboards that keep everything in one place.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#128736;</div><h3>Custom Tools</h3><p>Tools built around one exact job — bots, automation, dashboards and utilities made to save time every day.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#9000;</div><h3>Termux Tools</h3><p>Phone-first tools that run in Termux — built for mobile workflows, no PC required.</p></article>
+      </div>
+    </section>
+    <section id="journey" aria-label="Journey">
+      <div class="sec-head"><div class="sec-num">03 / JOURNEY</div><h2>The Journey So Far</h2></div>
+      <div class="card reveal">
+        <div class="timeline">
+          <div class="tl"><strong>2023 — Started Building</strong><p>First projects, first bots, learning by building every day.</p></div>
+          <div class="tl"><strong>2024 — Bots &amp; Tools</strong><p>Telegram bots, automation tools and web apps for real users.</p></div>
+          <div class="tl"><strong>2025 — Products &amp; Community</strong><p>Giveaway systems, support bots and a growing community.</p></div>
+          <div class="tl"><strong>2026 — SHADOW Today</strong><p>Smart digital products, built clean and shipped fast.</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="work" aria-label="Work">
+      <div class="sec-head"><div class="sec-num">04 / WORK</div><h2>Selected Work</h2></div>
+      <div class="grid">
+        <article class="card work-feature reveal">
+          <h3>Giveaway Bot System</h3>
+          <p>Automated giveaways, entries and winners — built for a live community.</p>
+          <div class="big">350+ users</div>
+        </article>
+        <div class="grid cols2">
+          <article class="card reveal"><h3>Support &amp; Chat Bots</h3><p>Telegram bots that answer, forward and manage conversations, day and night.</p></article>
+          <article class="card reveal"><h3>Websites &amp; Dashboards</h3><p>Fast, mobile-first websites and dashboards for products and services.</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="contact" aria-label="Contact">
+      <div class="sec-head"><div class="sec-num">05 / CONTACT</div><h2>Let&rsquo;s Talk</h2></div>
+      <div class="grid cols2 contact-grid">
+        <a class="card reveal" href="https://t.me/shadowhaccr"><h3>Telegram DM</h3><p>@shadowhaccr</p><span class="go">Message &rarr;</span></a>
+        <a class="card reveal" href="https://t.me/sk_dev_official"><h3>Shadow Dev Channel</h3><p>@sk_dev_official</p><span class="go">Visit &rarr;</span></a>
+        <a class="card reveal" href="https://t.me/shadowhacrrrr"><h3>Shadow Official</h3><p>@shadowhacrrrr</p><span class="go">Visit &rarr;</span></a>
+        <a class="card reveal" href="https://www.tiktok.com/@shadow_devv"><h3>TikTok</h3><p>@shadow_devv</p><span class="go">Watch &rarr;</span></a>
+      </div>
+    </section>
+  </main>
+  <footer>&copy; 2026 SHADOW — Built with care, by SHADOW.</footer>
 </div>
-</header>
-<section id="skills" class="reveal">
-<div class="sec-tag">01 / ARSENAL</div>
-<h2>What I do best.</h2>
-<p class="lead">Every skill below is battle-tested on real projects — bots serving hundreds of users, sites built from scratch.</p>
-<div class="skills">
-<div class="skill"><div class="ic">🐍</div><h3>Python Development</h3><div class="bar"><span data-w="92"></span></div></div>
-<div class="skill"><div class="ic">🤖</div><h3>Telegram Bots</h3><div class="bar"><span data-w="95"></span></div></div>
-<div class="skill"><div class="ic">🌐</div><h3>Websites</h3><div class="bar"><span data-w="88"></span></div></div>
-<div class="skill"><div class="ic">⚡</div><h3>Web Apps</h3><div class="bar"><span data-w="85"></span></div></div>
-<div class="skill"><div class="ic">🔁</div><h3>Automation Bots</h3><div class="bar"><span data-w="90"></span></div></div>
-<div class="skill"><div class="ic">🛡️</div><h3>Cybersecurity</h3><div class="bar"><span data-w="82"></span></div></div>
-</div>
-</section>
-<section id="journey" class="reveal">
-<div class="sec-tag">02 / JOURNEY</div>
-<h2>The path so far.</h2>
-<div class="terminal"><div class="t-bar"><i></i><i></i><i></i></div><div class="t-body">
-<div><span class="p">shadow@monarch</span><span class="c">:~$</span> <span class="w">cat journey.log</span></div>
-<div><span class="y">[2023]</span> <span class="w">Started the grind — Python, Linux, networking basics.</span></div>
-<div><span class="y">[2024]</span> <span class="w">First Telegram bots live. Real users. Real feedback.</span></div>
-<div><span class="y">[2025]</span> <span class="w">Websites + automation systems. Giveaway &amp; referral engines.</span></div>
-<div><span class="y">[2026]</span> <span class="w">Full-stack builds. Security-first mindset. Still rising. ▲</span></div>
-<div><span class="c"># 2–3 years of hacking, building &amp; breaking things (legally).</span></div>
-<div><span class="p">shadow@monarch</span><span class="c">:~$</span> <span class="w">▊</span></div>
-</div></div>
-</section>
-<section id="work" class="reveal">
-<div class="sec-tag">03 / WORK</div>
-<h2>Things I've built.</h2>
-<div class="projs">
-<div class="proj"><div class="ic">🎁</div><h3>Giveaway Bot System</h3><p>Telegram giveaway bot with referrals, broadcasts &amp; winner engine — serving 350+ users.</p></div>
-<div class="proj"><div class="ic">💬</div><h3>Support &amp; Chat Bots</h3><p>Auto-moderation, welcome flows and support automation for large groups.</p></div>
-<div class="proj"><div class="ic">🖥️</div><h3>Websites &amp; Dashboards</h3><p>Fast, mobile-first sites and admin panels — designed &amp; coded by hand.</p></div>
-</div>
-</section>
-<section id="contact" class="reveal">
-<div class="sec-tag">04 / CONTACT</div>
-<h2>Let's build something.</h2>
-<p class="lead">Have an idea? A bot, a site, an automation? Message me directly — I reply fast.</p>
-<div class="contact-grid">
-<a class="cbtn" href="https://t.me/shadowhaccr" target="_blank" rel="noopener"><span class="ic">✈️</span><span>Telegram DM<small>@shadowhaccr — fastest reply</small></span></a>
-<a class="cbtn" href="https://t.me/sk_dev_official" target="_blank" rel="noopener"><span class="ic">📢</span><span>Shadow Dev Channel<small>@sk_dev_official</small></span></a>
-<a class="cbtn" href="https://t.me/shadowhacrrrr" target="_blank" rel="noopener"><span class="ic">📢</span><span>Shadow Official<small>@shadowhacrrrr</small></span></a>
-<a class="cbtn" href="https://www.tiktok.com/@shadow_devv" target="_blank" rel="noopener"><span class="ic">🎵</span><span>TikTok<small>@shadow_devv</small></span></a>
-</div>
-</section>
-<footer>© 2026 SHADOW — Built with 💀 by the Monarch himself.</footer>
-</div>
+<div class="marquee rev" aria-hidden="true"><div class="marquee-track"><span>KING &bull; SHADOW &bull; AUTOMATION &bull; WEBSITES &bull; BOTS &bull; PYTHON &bull; </span><span>KING &bull; SHADOW &bull; AUTOMATION &bull; WEBSITES &bull; BOTS &bull; PYTHON &bull; </span></div></div>
 <script>
-(function(){
-var cv=document.getElementById('matrix'),cx=cv.getContext('2d'),cols,drops,W,H;
-var mobile=innerWidth<640;
-function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;
-var fs=mobile?18:16;cols=Math.floor(W/fs);
-drops=[];for(var i=0;i<cols;i++)drops[i]=Math.random()*-40;}
-size();addEventListener('resize',size);
-var chars='01<>/\\{}[]#$%&@01';
-var fs2=mobile?18:16,last=0;
-function draw(t){
-if(t-last<(mobile?90:55))return requestAnimationFrame(draw);
-last=t;cx.fillStyle='rgba(5,6,10,.14)';cx.fillRect(0,0,W,H);
-cx.font=fs2+'px monospace';
-var step=mobile?3:1;
-for(var i=0;i<cols;i+=step){
-var ch=chars[Math.floor(Math.random()*chars.length)];
-cx.fillStyle=Math.random()>.92?'#a855f7':'#00ff9d';
-cx.fillText(ch,i*fs2,drops[i]*fs2);
-if(drops[i]*fs2>H&&Math.random()>.976)drops[i]=0;
-drops[i]+=mobile?.6:1;}
-requestAnimationFrame(draw);}
-requestAnimationFrame(draw);
-var lines=['> I craft Telegram bots that work while you sleep.','> I ship websites that look dangerous & load fast.','> 2-3 years. Zero shortcuts. Pure build.'];
-var el=document.getElementById('typer'),li=0,ci=0,del=false;
-(function type(){
-var cur=lines[li];
-el.textContent=cur.slice(0,ci);
-if(!del){ci++;if(ci>cur.length){del=true;return setTimeout(type,1600);}}
-else{ci--;if(ci===0){del=false;li=(li+1)%lines.length;}}
-setTimeout(type,del?28:55);})();
-var io=new IntersectionObserver(function(es){es.forEach(function(e){
-if(e.isIntersecting){e.target.classList.add('on');
-e.target.querySelectorAll('.bar span').forEach(function(s){s.style.width=s.dataset.w+'%';});
-io.unobserve(e.target);}})},{threshold:.15});
-document.querySelectorAll('.reveal,.skill').forEach(function(s){io.observe(s);});
-})();
+  (function(){
+    var words=["Telegram Bots","Websites","Web Apps","Automation Tools","Python Projects"];
+    var el=document.getElementById("typing"),wi=0,ci=0,del=false;
+    function tick(){
+      var w=words[wi];
+      el.textContent=w.slice(0,ci);
+      if(!del){ci++;if(ci>w.length){del=true;setTimeout(tick,1400);return;}}
+      else{ci--;if(ci===0){del=false;wi=(wi+1)%words.length;}}
+      setTimeout(tick,del?35:70);
+    }
+    tick();
+  })();
+  (function(){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add("visible");
+          e.target.querySelectorAll(".bar i").forEach(function(b){b.style.width=b.getAttribute("data-w");});
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.15});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+  })();
 </script>
 </body>
 </html>
