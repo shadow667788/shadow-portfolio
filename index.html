@@ -177,6 +177,27 @@
     .grid.cols2{grid-template-columns:1fr 1fr}
     .grid.cols3{grid-template-columns:1fr 1fr 1fr}
   }
+
+  /* --- NEXT LEVEL: music + beat-reactive polish --- */
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+  .topbrand{font-weight:900;letter-spacing:.28em;font-size:12px;color:var(--red2)}
+  .mute-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:rgba(255,45,85,.10);color:#fff;font-weight:800;font-size:13px;cursor:pointer;transition:transform .25s,box-shadow .25s;animation:pulseRed 3s ease-in-out infinite}
+  .mute-btn:hover{transform:translateY(-2px)}
+  .mute-btn .wave{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
+  .mute-btn .wave i{display:block;width:3px;height:5px;border-radius:99px;background:#fff}
+  .mute-btn.playing .wave i{animation:waveBounce 0.7s ease-in-out infinite}
+  .mute-btn.playing .wave i:nth-child(2){animation-delay:.15s}
+  .mute-btn.playing .wave i:nth-child(3){animation-delay:.3s}
+  .mute-btn.playing .wave i:nth-child(4){animation-delay:.45s}
+  @keyframes waveBounce{0%,100%{height:5px}50%{height:14px}}
+  .mute-btn.muted{opacity:.75}
+  .mute-btn.muted .wave i{height:5px;animation:none;opacity:.5}
+  .viz{display:flex;gap:5px;align-items:flex-end;height:36px;margin-top:20px}
+  .viz i{flex:0 0 5px;height:10px;border-radius:99px;background:var(--grad);box-shadow:0 0 10px rgba(255,45,85,.45);transition:height .09s ease}
+  .viz-note{color:var(--muted);font-size:12px;margin-top:8px;letter-spacing:.04em}
+  .hero-title-glow{background:linear-gradient(90deg,#ff7a8a,#ffffff,#ff2d55,#c084fc,#ff7a8a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 7s ease infinite}
+  .king-logo{transition:filter .12s ease}
+  @media(max-width:480px){.topbrand{letter-spacing:.18em}}
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
@@ -188,6 +209,7 @@
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span></div></div>
 <div class="wrap">
   <header id="home">
+    <div class="topbar"><span class="topbrand">SHADOW &#9819;</span><button id="muteBtn" class="mute-btn muted" type="button" aria-label="Toggle background music"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="muteLabel">Music: Off</span></button></div>
     <div class="king-logo" aria-label="SHADOW king logo">
       <div class="logo-ring"></div>
       <div class="logo-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -223,6 +245,8 @@
           <a class="btn btn-primary" href="#contact">Start a Project &rarr;</a>
           <a class="btn btn-ghost" href="#work">See What I Build</a>
         </div>
+        <div class="viz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="viz-note">Background music reacts to the beat. If it does not start, tap or scroll once.</p>
       </div>
       <aside class="showcase" aria-label="Showcase">
         <div class="avatar">S</div>
@@ -328,6 +352,75 @@
     },{threshold:.15});
     document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
   })();
+</script>
+
+<audio id="bgSong" src="song.mp3" loop preload="auto"></audio>
+<script>
+/* USER-SUPPLIED SONG — song.mp3 (local file, looped) routed through the
+   AnalyserNode so beat-reactive animations react to this song. */
+(function(){
+  var btn=document.getElementById('muteBtn'), label=document.getElementById('muteLabel');
+  var audio=document.getElementById('bgSong');
+  var bars=document.querySelectorAll('.viz i');
+  var marqueeTracks=document.querySelectorAll('.marquee-track');
+  var logo=document.querySelector('.king-logo');
+  var ctx=null, analyser=null, master=null, source=null, data=null, started=false, muted=true;
+  function setBtn(){
+    btn.classList.toggle('playing', started && !muted);
+    btn.classList.toggle('muted', !started || muted);
+    label.textContent = (started && !muted) ? 'Music: On' : 'Music: Off';
+  }
+  function start(){
+    if(started) return;
+    try{
+      ctx = ctx || new (window.AudioContext||window.webkitAudioContext)();
+      if(!analyser){
+        analyser=ctx.createAnalyser(); analyser.fftSize=256;
+        master=ctx.createGain(); master.gain.value=0.8;
+        source=ctx.createMediaElementSource(audio);
+        source.connect(analyser); analyser.connect(master); master.connect(ctx.destination);
+        data=new Uint8Array(analyser.frequencyBinCount);
+      }
+      if(ctx.state==='suspended') ctx.resume();
+      audio.loop=true;
+      var p=audio.play();
+      if(p && p.then){
+        p.then(function(){ started=true; muted=false; setBtn(); animate(); })
+         .catch(function(){ /* blocked: first-interaction fallback below retries */ });
+      } else { started=true; muted=false; setBtn(); animate(); }
+    }catch(e){ /* audio unavailable: gentle CSS animations continue */ }
+  }
+  function animate(){
+    if(!analyser) return;
+    requestAnimationFrame(animate);
+    analyser.getByteFrequencyData(data);
+    var bass=0; for(var i=0;i<6;i++) bass+=data[i]; bass=(bass/6)/255;
+    var vol=0; for(var j=0;j<data.length;j++) vol+=data[j]; vol=(vol/data.length)/255;
+    if(muted){ bass=0; vol=0; }
+    document.documentElement.style.setProperty('--beat', bass.toFixed(3));
+    bars.forEach(function(bar, idx){
+      var v = muted ? 8 : (6 + (data[idx*2]||0)/255*28);
+      bar.style.height = v + 'px';
+    });
+    marqueeTracks.forEach(function(tr){
+      tr.style.animationDuration = (muted ? '' : (24 - bass*12) + 's');
+    });
+    if(logo) logo.style.filter = 'drop-shadow(0 0 ' + Math.round(10 + bass*28) + 'px rgba(255,45,85,' + (0.45 + bass*0.5).toFixed(2) + '))';
+  }
+  btn.addEventListener('click', function(ev){
+    ev.stopPropagation();
+    if(!started){ start(); return; }
+    muted=!muted;
+    if(master) master.gain.value = muted ? 0 : 0.8;
+    setBtn();
+  });
+  // Autoplay attempt on load; first touch/scroll/click fallback if blocked.
+  window.addEventListener('load', function(){ start(); });
+  ['pointerdown','touchstart','scroll','keydown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ if(!started) start(); }, {passive:true});
+  });
+  setBtn();
+})();
 </script>
 </body>
 </html>
