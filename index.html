@@ -3,8 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOW — Portfolio</title>
-<meta name="description" content="SHADOW builds smart digital products: Python development, Telegram bots, websites, web apps, and automation.">
+<title>Shadow Developer Pakistan — Shadow Hacker | Telegram Bots, Shadow Bots &amp; Websites</title>
+<meta name="description" content="Shadow Developer Pakistan — Shadow Developer builds Telegram bots, Shadow Bots, bots &amp; panels, Android apps, websites and automation tools. Shadow Developer, Shadow Pakistan, Shadow Hacker — bots, bots, websites, web apps.">
+<meta name="keywords" content="Shadow Developer, Shadow Developer Pakistan, Shadow Pakistan, Shadow Hacker, Shadow, Shadow Hacr, Shadow Bots, Telegram Bots, Bot Developer, Bots and Panels, Python Developer Pakistan, Shadow Portfolio">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Shadow Hacker">
+<link rel="canonical" href="https://shadow-portfolio-seven.vercel.app/">
+<meta property="og:title" content="Shadow Developer Pakistan — Shadow Developer">
+<meta property="og:description" content="Shadow Developer Pakistan builds Telegram bots, Shadow Bots, bots &amp; panels, Android apps, websites and automation tools.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shadow-portfolio-seven.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow Developer Pakistan — Shadow Developer">
+<meta name="twitter:description" content="Shadow Developer Pakistan — Telegram bots, Shadow Bots, bots &amp; panels, Android apps, websites and automation tools.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Shadow Developer","alternateName":["Shadow","Shadow Hacker","Shadow Pakistan","Shadow Hacr","Shadow Bots"],"jobTitle":"Developer","description":"Shadow Developer Pakistan. Telegram bots, bots and panels, Android apps, websites and automation tools.","url":"https://shadow-portfolio-seven.vercel.app/","sameAs":["https://t.me/shadowhaccr","https://t.me/sk_dev_official","https://www.tiktok.com/@shadow_devv"]}
+</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
@@ -89,7 +103,8 @@
   .king-line{font-size:12px;font-weight:900;letter-spacing:.34em;color:var(--red2);text-transform:uppercase;margin:6px 0 2px;animation:gradShift 5s ease infinite}
   .wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:28px 18px 56px}
   header{text-align:center;padding:10px 0 6px;animation:riseIn .8s ease both}
-  .tagline{color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-top:10px}
+  .tagline{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-top:10px;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,45,85,.10);box-shadow:0 8px 20px rgba(255,45,85,.22),inset 0 1px 0 rgba(255,255,255,.10);animation:floatY 6s ease-in-out infinite}
+  .tagline span{background:linear-gradient(90deg,#ff7a8a,#ffffff,#ff2d55,#c084fc,#ff7a8a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 5s ease infinite;filter:drop-shadow(0 0 12px rgba(255,45,85,.5))}
   nav.pillnav{
     display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto 0;padding:6px;
     background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:999px;width:fit-content;max-width:100%;
@@ -184,27 +199,9 @@
     .grid.cols3{grid-template-columns:1fr 1fr 1fr}
   }
 
-  /* --- NEXT LEVEL: music + beat-reactive polish --- */
-  .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
-  .topbrand{font-weight:900;letter-spacing:.28em;font-size:12px;color:var(--red2)}
-  .mute-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:rgba(255,45,85,.10);color:#fff;font-weight:800;font-size:13px;cursor:pointer;transition:transform .15s,box-shadow .25s;box-shadow:0 4px 0 rgba(0,0,0,.4),0 10px 20px rgba(0,0,0,.3);animation:pulseRed 3s ease-in-out infinite}
-  .mute-btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.4)}
-  .mute-btn:hover{transform:translateY(-2px)}
-  .mute-btn .wave{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
-  .mute-btn .wave i{display:block;width:3px;height:5px;border-radius:99px;background:#fff}
-  .mute-btn.playing .wave i{animation:waveBounce 0.7s ease-in-out infinite}
-  .mute-btn.playing .wave i:nth-child(2){animation-delay:.15s}
-  .mute-btn.playing .wave i:nth-child(3){animation-delay:.3s}
-  .mute-btn.playing .wave i:nth-child(4){animation-delay:.45s}
-  @keyframes waveBounce{0%,100%{height:5px}50%{height:14px}}
-  .mute-btn.muted{opacity:.75}
-  .mute-btn.muted .wave i{height:5px;animation:none;opacity:.5}
-  .viz{display:flex;gap:5px;align-items:flex-end;height:36px;margin-top:20px}
-  .viz i{flex:0 0 5px;height:10px;border-radius:99px;background:var(--grad);box-shadow:0 0 10px rgba(255,45,85,.45);transition:height .09s ease}
-  .viz-note{color:var(--muted);font-size:12px;margin-top:8px;letter-spacing:.04em}
-  .hero-title-glow{background:linear-gradient(90deg,#ff7a8a,#ffffff,#ff2d55,#c084fc,#ff7a8a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 7s ease infinite}
-  .king-logo{transition:filter .12s ease}
-  @media(max-width:480px){.topbrand{letter-spacing:.18em}}
+  .topbar{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-bottom:6px}
+  .topbrand{font-weight:900;letter-spacing:.28em;font-size:12px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,45,85,.10);box-shadow:0 8px 20px rgba(255,45,85,.25),inset 0 1px 0 rgba(255,255,255,.12);animation:floatY 5s ease-in-out infinite}
+  .topbrand span{background:linear-gradient(90deg,#ff7a8a,#ffffff,#ff2d55,#c084fc,#ff7a8a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 5s ease infinite;filter:drop-shadow(0 0 12px rgba(255,45,85,.55))}
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
@@ -213,10 +210,10 @@
 </head>
 <body>
 <div class="ambience" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
-<div class="marquee top-marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span><span>SHADOW &bull; KING &bull; PYTHON &bull; BOTS &bull; WEBSITES &bull; AUTOMATION &bull; </span></div></div>
+<div class="marquee top-marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW DEVELOPER &bull; SHADOW PAKISTAN &bull; SHADOW BOTS &bull; TELEGRAM BOTS &bull; WEBSITES &bull; PYTHON &bull; </span><span>SHADOW DEVELOPER &bull; SHADOW PAKISTAN &bull; SHADOW BOTS &bull; TELEGRAM BOTS &bull; WEBSITES &bull; PYTHON &bull; </span></div></div>
 <div class="wrap">
   <header id="home">
-    <div class="topbar"><span class="topbrand">SHADOW &#9819;</span><button id="muteBtn" class="mute-btn muted" type="button" aria-label="Toggle background music"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="muteLabel">Music: Off</span></button></div>
+    <div class="topbar"><span class="topbrand"><span>SHADOW DEVELOPER &#9819;</span></span></div>
     <div class="king-logo" aria-label="SHADOW king logo">
       <div class="logo-ring"></div>
       <div class="logo-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -230,8 +227,8 @@
         <div class="logo-word">SHADOW</div>
       </div>
     </div>
-    <div class="king-line">The King Builds</div>
-    <div class="tagline">Python Developer &middot; Telegram Bots &middot; Websites</div>
+    <div class="king-line">Shadow Developer &bull; The King Builds</div>
+    <div class="tagline"><span>Shadow Developer Pakistan &middot; Telegram Bots &middot; Shadow Bots &middot; Bot Developer</span></div>
     <nav class="pillnav" aria-label="Main navigation">
       <a href="#home" class="active">Home</a>
       <a href="#skills">Skills</a>
@@ -244,21 +241,19 @@
   <main>
     <section class="hero" aria-label="Introduction">
       <div class="hero-text">
-        <span class="kicker">&#9819; King Style &mdash; Available for projects</span>
-        <h1>I build <em>smart digital products</em></h1>
+        <span class="kicker">&#9819; Shadow Developer &mdash; Available for projects</span>
+        <h1>Shadow Developer — I build <em>smart digital products</em></h1>
         <div class="typing">I create <b id="typing">Telegram Bots</b><span class="cursor"></span></div>
-        <p class="lead">Complete apps, websites, website-to-app conversions, boards &amp; panels, custom tools and Termux tools — if it can be built, I build it. Python development, Telegram bots and automation, built clean, fast and made to be used every day.</p>
+        <p class="lead">Shadow Developer Pakistan — complete apps, websites, website-to-app conversions, Shadow Bots, bots &amp; panels, custom tools and Termux tools. If it can be built, I build it. Python development, Telegram bots, bot developer services and automation, built clean, fast and made to be used every day.</p>
         <div class="btnrow">
           <a class="btn btn-primary" href="#contact">Start a Project &rarr;</a>
           <a class="btn btn-ghost" href="#work">See What I Build</a>
         </div>
-        <div class="viz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <p class="viz-note">Background music reacts to the beat. If it does not start, tap or scroll once.</p>
       </div>
       <aside class="showcase" aria-label="Showcase">
         <div class="avatar">S</div>
-        <h2>SHADOW</h2>
-        <p>Developer focused on practical products: bots people actually use, websites that load fast, and tools that save time.</p>
+        <h2>SHADOW DEVELOPER</h2>
+        <p>Shadow Developer Pakistan — developer focused on practical products: Telegram bots people actually use, Shadow Bots, bots &amp; panels, websites that load fast, and tools that save time.</p>
         <div class="stats">
           <div class="stat"><strong>350+</strong><span>Giveaway Users</span></div>
           <div class="stat"><strong>95%</strong><span>Bot Skill</span></div>
@@ -281,18 +276,18 @@
         </div>
       </div>
       <div class="chiprow reveal">
-        <span class="chip">Python</span><span class="chip">Telegram Bots</span><span class="chip">Websites</span><span class="chip">Web Apps</span><span class="chip">Automation</span><span class="chip">APIs</span><span class="chip">Flask</span>
+        <span class="chip">Shadow Developer</span><span class="chip">Shadow Pakistan</span><span class="chip">Shadow Bots</span><span class="chip">Bot Developer</span><span class="chip">Python</span><span class="chip">Telegram Bots</span><span class="chip">Websites</span><span class="chip">Web Apps</span><span class="chip">Automation</span><span class="chip">APIs</span><span class="chip">Flask</span>
       </div>
     </section>
     <section id="services" aria-label="Services">
       <div class="sec-head"><div class="sec-num">02 / SERVICES</div><h2>What I Build — Anything</h2></div>
-      <p style="color:var(--muted);margin:-8px 0 24px;max-width:620px">Complete apps, websites, boards, tools and more — one builder, end to end. If it can be built, I build it.</p>
+      <p style="color:var(--muted);margin:-8px 0 24px;max-width:620px">Complete apps, websites, bots, tools and more — one builder, end to end. If it can be built, I build it.</p>
       <div class="grid cols2">
         <article class="card service-card reveal"><div class="service-icon">&#128241;</div><h3>Complete Apps</h3><p>Full mobile and web apps, designed, built and ready to use — not just a demo, a complete product.</p></article>
         <article class="card service-card reveal"><div class="service-icon">&#127760;</div><h3>Websites</h3><p>Fast, mobile-first websites for businesses, products and services, with clean design and clear contact paths.</p></article>
         <article class="card service-card reveal"><div class="service-icon">&#8646;</div><h3>Website to App</h3><p>Turn an existing website into a proper app experience, so users get it on their phone like a real app.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#128187;</div><h3>Boards &amp; Panels</h3><p>Control boards, service boards and hosting panels — dashboards that keep everything in one place.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#128736;</div><h3>Custom Tools</h3><p>Tools built around one exact job — bots, automation, dashboards and utilities made to save time every day.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#128187;</div><h3>Bots &amp; Panels</h3><p>Control bots, service bots and hosting panels — dashbots that keep everything in one place.</p></article>
+        <article class="card service-card reveal"><div class="service-icon">&#128736;</div><h3>Custom Tools</h3><p>Tools built around one exact job — bots, automation, dashbots and utilities made to save time every day.</p></article>
         <article class="card service-card reveal"><div class="service-icon">&#9000;</div><h3>Termux Tools</h3><p>Phone-first tools that run in Termux — built for mobile workflows, no PC required.</p></article>
       </div>
     </section>
@@ -317,7 +312,7 @@
         </article>
         <div class="grid cols2">
           <article class="card reveal"><h3>Support &amp; Chat Bots</h3><p>Telegram bots that answer, forward and manage conversations, day and night.</p></article>
-          <article class="card reveal"><h3>Websites &amp; Dashboards</h3><p>Fast, mobile-first websites and dashboards for products and services.</p></article>
+          <article class="card reveal"><h3>Websites &amp; Dashbots</h3><p>Fast, mobile-first websites and dashbots for products and services.</p></article>
         </div>
       </div>
     </section>
@@ -331,12 +326,12 @@
       </div>
     </section>
   </main>
-  <footer>&copy; 2026 SHADOW — Built with care, by SHADOW.</footer>
+  <footer>&copy; 2026 Shadow Developer — Shadow Developer Pakistan. Built with care, by Shadow.</footer>
 </div>
-<div class="marquee rev" aria-hidden="true"><div class="marquee-track"><span>KING &bull; SHADOW &bull; AUTOMATION &bull; WEBSITES &bull; BOTS &bull; PYTHON &bull; </span><span>KING &bull; SHADOW &bull; AUTOMATION &bull; WEBSITES &bull; BOTS &bull; PYTHON &bull; </span></div></div>
+<div class="marquee rev" aria-hidden="true"><div class="marquee-track"><span>SHADOW DEVELOPER &bull; BOT DEVELOPER &bull; SHADOW BOTS &bull; AUTOMATION &bull; WEBSITES &bull; PYTHON &bull; </span><span>SHADOW DEVELOPER &bull; BOT DEVELOPER &bull; SHADOW BOTS &bull; AUTOMATION &bull; WEBSITES &bull; PYTHON &bull; </span></div></div>
 <script>
   (function(){
-    var words=["Telegram Bots","Websites","Web Apps","Automation Tools","Python Projects"];
+    var words=["Shadow Developer","Shadow Bots","Telegram Bots","Bot Developer","Websites","Shadow Pakistan"];
     var el=document.getElementById("typing"),wi=0,ci=0,del=false;
     function tick(){
       var w=words[wi];
@@ -361,77 +356,5 @@
   })();
 </script>
 
-<audio id="bgSong" src="song.mp3" loop preload="auto" autoplay playsinline></audio>
-<script>
-/* USER-SUPPLIED SONG — song.mp3 (local file, looped) routed through the
-   AnalyserNode so beat-reactive animations react to this song. */
-(function(){
-  var btn=document.getElementById('muteBtn'), label=document.getElementById('muteLabel');
-  var audio=document.getElementById('bgSong');
-  var bars=document.querySelectorAll('.viz i');
-  var logo=document.querySelector('.king-logo');
-  var ctx=null, analyser=null, master=null, source=null, data=null, started=false, muted=true;
-  function setBtn(){
-    btn.classList.toggle('playing', started && !muted);
-    btn.classList.toggle('muted', !started || muted);
-    label.textContent = (started && !muted) ? 'Music: On' : 'Music: Off';
-  }
-  function start(){
-    if(started) return;
-    try{
-      ctx = ctx || new (window.AudioContext||window.webkitAudioContext)();
-      if(!analyser){
-        analyser=ctx.createAnalyser(); analyser.fftSize=256;
-        master=ctx.createGain(); master.gain.value=0.8;
-        source=ctx.createMediaElementSource(audio);
-        source.connect(analyser); analyser.connect(master); master.connect(ctx.destination);
-        data=new Uint8Array(analyser.frequencyBinCount);
-      }
-      if(ctx.state==='suspended') ctx.resume();
-      audio.loop=true;
-      var p=audio.play();
-      if(p && p.then){
-        p.then(function(){ started=true; muted=false; setBtn(); animate(); })
-         .catch(function(){ /* blocked: first-interaction fallback below retries */ });
-      } else { started=true; muted=false; setBtn(); animate(); }
-    }catch(e){ /* audio unavailable: gentle CSS animations continue */ }
-  }
-  function animate(){
-    if(!analyser) return;
-    requestAnimationFrame(animate);
-    analyser.getByteFrequencyData(data);
-    var bass=0; for(var i=0;i<6;i++) bass+=data[i]; bass=(bass/6)/255;
-    var vol=0; for(var j=0;j<data.length;j++) vol+=data[j]; vol=(vol/data.length)/255;
-    if(muted){ bass=0; vol=0; }
-    document.documentElement.style.setProperty('--beat', bass.toFixed(3));
-    bars.forEach(function(bar, idx){
-      var v = muted ? 8 : (6 + (data[idx*2]||0)/255*28);
-      bar.style.height = v + 'px';
-    });
-    if(logo) logo.style.filter = 'drop-shadow(0 0 ' + Math.round(10 + bass*28) + 'px rgba(255,45,85,' + (0.45 + bass*0.5).toFixed(2) + '))';
-  }
-  btn.addEventListener('click', function(ev){
-    ev.stopPropagation();
-    if(!started){ start(); return; }
-    muted=!muted;
-    if(master) master.gain.value = muted ? 0 : 0.8;
-    setBtn();
-  });
-  // Autoplay: attempt immediately (link-click activation lasts only a few
-  // seconds, so waiting for window load can miss it), retry briefly, and
-  // fall back to the first touch/scroll/click if the browser still blocks it.
-  start();
-  window.addEventListener('load', function(){ start(); });
-  var tries = 0;
-  var retry = setInterval(function(){
-    if(started || tries >= 8){ clearInterval(retry); return; }
-    tries++; start();
-  }, 800);
-  ['pointerdown','mousedown','touchstart','scroll','keydown'].forEach(function(ev){
-    window.addEventListener(ev, function(){ if(!started) start(); }, {passive:true});
-  });
-  setBtn();
-})();
-</script>
 </body>
 </html>
