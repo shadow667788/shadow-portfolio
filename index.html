@@ -154,7 +154,9 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.visible{opacity:1;transform:none}
   .grid{display:grid;gap:18px;align-items:start}
-  .service-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:900;color:#fff;background:var(--grad);margin-bottom:14px;box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -3px 0 rgba(0,0,0,.35),0 8px 16px rgba(255,45,85,.35);animation:floatY 5s ease-in-out infinite}
+  .service-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--grad);margin-bottom:14px;}
+  .service-icon svg{width:26px;height:26px;display:block}
+  .mini-crown{width:14px;height:14px;display:inline-block;vertical-align:-2px}box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -3px 0 rgba(0,0,0,.35),0 8px 16px rgba(255,45,85,.35);animation:floatY 5s ease-in-out infinite}
   .service-card h3{font-size:18px;margin-bottom:6px}
   .service-card p{color:var(--muted);font-size:14px;line-height:1.6}
   .card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 14px 30px rgba(0,0,0,.45),0 4px 10px rgba(0,0,0,.35);animation:bob 8s ease-in-out infinite;transition:box-shadow .25s,border-color .25s}
@@ -213,7 +215,7 @@
 <div class="marquee top-marquee" aria-hidden="true"><div class="marquee-track"><span>SHADOW DEVELOPER &bull; SHADOW PAKISTAN &bull; SHADOW BOTS &bull; TELEGRAM BOTS &bull; WEBSITES &bull; PYTHON &bull; </span><span>SHADOW DEVELOPER &bull; SHADOW PAKISTAN &bull; SHADOW BOTS &bull; TELEGRAM BOTS &bull; WEBSITES &bull; PYTHON &bull; </span></div></div>
 <div class="wrap">
   <header id="home">
-    <div class="topbar"><span class="topbrand"><span>SHADOW DEVELOPER &#9819;</span></span></div>
+    <div class="topbar"><span class="topbrand"><span>SHADOW DEVELOPER <svg class="mini-crown" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l4 4 5-6 5 6 4-4v9H3V8z" fill="currentColor"/></svg></span></span></div>
     <div class="king-logo" aria-label="SHADOW king logo">
       <div class="logo-ring"></div>
       <div class="logo-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -241,7 +243,7 @@
   <main>
     <section class="hero" aria-label="Introduction">
       <div class="hero-text">
-        <span class="kicker">&#9819; Shadow Developer &mdash; Available for projects</span>
+        <span class="kicker"><svg class="mini-crown" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l4 4 5-6 5 6 4-4v9H3V8z" fill="currentColor"/></svg> Shadow Developer &mdash; Available for projects</span>
         <h1>Shadow Developer — I build <em>smart digital products</em></h1>
         <div class="typing">I create <b id="typing">Telegram Bots</b><span class="cursor"></span></div>
         <p class="lead">Shadow Developer Pakistan — complete apps, websites, website-to-app conversions, Shadow Bots, bots &amp; panels, custom tools and Termux tools. If it can be built, I build it. Python development, Telegram bots, bot developer services and automation, built clean, fast and made to be used every day.</p>
@@ -283,12 +285,12 @@
       <div class="sec-head"><div class="sec-num">02 / SERVICES</div><h2>What I Build — Anything</h2></div>
       <p style="color:var(--muted);margin:-8px 0 24px;max-width:620px">Complete apps, websites, bots, tools and more — one builder, end to end. If it can be built, I build it.</p>
       <div class="grid cols2">
-        <article class="card service-card reveal"><div class="service-icon">&#128241;</div><h3>Complete Apps</h3><p>Full mobile and web apps, designed, built and ready to use — not just a demo, a complete product.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#127760;</div><h3>Websites</h3><p>Fast, mobile-first websites for businesses, products and services, with clean design and clear contact paths.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#8646;</div><h3>Website to App</h3><p>Turn an existing website into a proper app experience, so users get it on their phone like a real app.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#128187;</div><h3>Bots &amp; Panels</h3><p>Control bots, service bots and hosting panels — dashbots that keep everything in one place.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#128736;</div><h3>Custom Tools</h3><p>Tools built around one exact job — bots, automation, dashbots and utilities made to save time every day.</p></article>
-        <article class="card service-card reveal"><div class="service-icon">&#9000;</div><h3>Termux Tools</h3><p>Phone-first tools that run in Termux — built for mobile workflows, no PC required.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Complete Apps</h3><p>Full mobile and web apps, designed, built and ready to use — not just a demo, a complete product.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></div><h3>Websites</h3><p>Fast, mobile-first websites for businesses, products and services, with clean design and clear contact paths.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg></div><h3>Website to App</h3><p>Turn an existing website into a proper app experience, so users get it on their phone like a real app.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20M12 16v4"/></svg></div><h3>Bots &amp; Panels</h3><p>Control bots, service bots and hosting panels — dashbots that keep everything in one place.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div><h3>Custom Tools</h3><p>Tools built around one exact job — bots, automation, dashbots and utilities made to save time every day.</p></article>
+        <article class="card service-card reveal"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M18 14h.01M9 14h6"/></svg></div><h3>Termux Tools</h3><p>Phone-first tools that run in Termux — built for mobile workflows, no PC required.</p></article>
       </div>
     </section>
     <section id="journey" aria-label="Journey">
